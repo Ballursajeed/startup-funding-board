@@ -14,7 +14,8 @@ export default function DashboardPage() {
         </span>
       </div>
       <p className="dashboard-placeholder">
-        Startup listings coming in the next stage.
+        Browse startups on the{' '}
+        <Link to="/startups">Startups page</Link>.
       </p>
       {user?.role === 'founder' && (
         <Link to="/startups/new" className="btn btn-primary">

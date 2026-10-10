@@ -6,22 +6,58 @@ import Layout from './components/layout/Layout.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 import SignupPage from './pages/SignupPage.jsx';
 import DashboardPage from './pages/DashboardPage.jsx';
+import StartupsPage from './pages/StartupsPage.jsx';
+import StartupDetailPage from './pages/StartupDetailPage.jsx';
+import CreateStartupPage from './pages/CreateStartupPage.jsx';
+import EditStartupPage from './pages/EditStartupPage.jsx';
 
 export default function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
         <Routes>
-          {/* Public routes */}
+          {/* Public auth routes (no layout) */}
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
 
-          {/* Protected routes with shared layout */}
-          <Route element={<ProtectedRoute><Layout /></ProtectedRoute>}>
-            <Route path="/dashboard" element={<DashboardPage />} />
+          {/* All pages with the navbar layout */}
+          <Route element={<Layout />}>
+            {/* Dashboard — protected */}
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <DashboardPage />
+                </ProtectedRoute>
+              }
+            />
+
+            {/* Startup listing + detail — public */}
+            <Route path="/startups" element={<StartupsPage />} />
+            <Route path="/startups/:id" element={<StartupDetailPage />} />
+
+            {/* /startups/new — founder only. Static segment beats :id param in React Router v6 */}
+            <Route
+              path="/startups/new"
+              element={
+                <ProtectedRoute requiredRole="founder">
+                  <CreateStartupPage />
+                </ProtectedRoute>
+              }
+            />
+
+            {/* /startups/:id/edit — founder only */}
+            <Route
+              path="/startups/:id/edit"
+              element={
+                <ProtectedRoute requiredRole="founder">
+                  <EditStartupPage />
+                </ProtectedRoute>
+              }
+            />
           </Route>
 
-          {/* Default redirect */}
+          {/* Default redirects */}
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
           <Route path="*" element={<Navigate to="/dashboard" replace />} />
         </Routes>

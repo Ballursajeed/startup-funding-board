@@ -19,6 +19,11 @@ export default function Navbar() {
           VentureBoard
         </Link>
 
+        {/* Desktop nav links — hidden on mobile (shown inside open menu) */}
+        <div className="navbar-nav" aria-label="Site navigation">
+          <Link to="/startups" className="navbar-link">Startups</Link>
+        </div>
+
         {/* Hamburger button — visible on small screens only */}
         <button
           className="navbar-toggle"
@@ -32,6 +37,9 @@ export default function Navbar() {
         </button>
 
         <div className={`navbar-menu${menuOpen ? ' navbar-menu--open' : ''}`}>
+          {/* Mobile-only nav link (desktop version is in navbar-nav above) */}
+          <Link to="/startups" className="navbar-link navbar-link--mobile">Startups</Link>
+
           {isAuthenticated ? (
             <>
               <span className="navbar-user">

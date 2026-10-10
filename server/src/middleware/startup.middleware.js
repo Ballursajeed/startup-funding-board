@@ -37,7 +37,7 @@ const updateSchema = startupSchema.partial().refine(
 
 const listQuerySchema = z.object({
   search: z.string().trim().max(80).optional(),
-  industry: z.string().trim().min(2).max(60).optional(),
+  industry: z.string().trim().min(1).max(60).optional(),
   stage: stageSchema.optional(),
   status: statusSchema.optional(),
   page: z.coerce.number().int().min(1).max(10000).default(1),

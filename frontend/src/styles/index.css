@@ -414,3 +414,550 @@ button {
     padding: 2rem 1rem;
   }
 }
+
+/* ===========================
+   Startup Cards
+   =========================== */
+.startup-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: box-shadow 0.15s ease;
+}
+
+.startup-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.startup-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.startup-card-name {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #212529;
+  margin: 0;
+}
+
+.startup-card-tagline {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.startup-card-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin-top: 0.25rem;
+}
+
+.startup-card-funding {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #495057;
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+.startup-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  border-top: 1px solid #f1f3f5;
+  padding-top: 0.75rem;
+}
+
+.startup-card-owner-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* ===========================
+   Badges
+   =========================== */
+.badge {
+  display: inline-block;
+  padding: 0.2em 0.65em;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+.badge--industry {
+  background-color: #f3f0ff;
+  color: #5f3dc4;
+}
+
+.badge--stage {
+  background-color: #e8f4fd;
+  color: #1864ab;
+}
+
+.badge--status-fundraising {
+  background-color: #d3f9d8;
+  color: #2b8a3e;
+}
+
+.badge--status-paused {
+  background-color: #fff3bf;
+  color: #e67700;
+}
+
+.badge--status-funded {
+  background-color: #d0ebff;
+  color: #1971c2;
+}
+
+/* ===========================
+   Button variants
+   =========================== */
+.btn-sm {
+  padding: 0.3rem 0.75rem;
+  font-size: 0.875rem;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: #fff;
+  border-color: #dc3545;
+}
+
+.btn-danger:hover {
+  background-color: #b02a37;
+  border-color: #b02a37;
+  text-decoration: none;
+}
+
+/* ===========================
+   Filter Bar
+   =========================== */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  margin-bottom: 1.5rem;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1 1 160px;
+  min-width: 130px;
+}
+
+.filter-label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #495057;
+}
+
+.filter-input,
+.filter-select {
+  padding: 0.5rem 0.75rem;
+  border: 1.5px solid #dee2e6;
+  border-radius: 6px;
+  font-size: 0.9375rem;
+  font-family: inherit;
+  color: #212529;
+  background-color: #fff;
+  height: 38px;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.filter-input:focus,
+.filter-select:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+}
+
+/* ===========================
+   Startup Grid
+   =========================== */
+.startup-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 900px) {
+  .startup-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .startup-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===========================
+   Startups Page
+   =========================== */
+.startups-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.startups-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.startups-page-header h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #212529;
+}
+
+/* ===========================
+   Empty State
+   =========================== */
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #6c757d;
+  font-size: 1rem;
+}
+
+/* ===========================
+   Error Message Component
+   =========================== */
+.error-message {
+  color: #dc3545;
+  background-color: #fff5f5;
+  border: 1px solid #f5c2c7;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  font-size: 0.9375rem;
+  margin-bottom: 1rem;
+}
+
+/* ===========================
+   Pagination
+   =========================== */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  padding: 1.5rem 0;
+}
+
+.pagination-btn {
+  padding: 0.4rem 0.75rem;
+  border: 1.5px solid #dee2e6;
+  border-radius: 6px;
+  background: #fff;
+  color: #495057;
+  font-size: 0.9rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  min-width: 36px;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background-color: #e9ecef;
+}
+
+.pagination-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.pagination-btn--active {
+  background-color: #4f46e5;
+  border-color: #4f46e5;
+  color: #fff;
+  font-weight: 600;
+}
+
+.pagination-btn--active:hover:not(:disabled) {
+  background-color: #4338ca;
+  border-color: #4338ca;
+}
+
+.pagination-ellipsis {
+  padding: 0.4rem 0.25rem;
+  color: #6c757d;
+  user-select: none;
+}
+
+/* ===========================
+   Startup Detail Page
+   =========================== */
+.detail-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.detail-back {
+  margin-bottom: 1.5rem;
+}
+
+.detail-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 2rem;
+  align-items: start;
+}
+
+.detail-name {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #212529;
+  margin-bottom: 0.5rem;
+}
+
+.detail-tagline {
+  font-size: 1.125rem;
+  color: #6c757d;
+  margin-bottom: 1rem;
+}
+
+.detail-section {
+  margin-top: 1.5rem;
+}
+
+.detail-section h2 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #212529;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.detail-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.detail-meta {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.detail-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.detail-meta-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #868e96;
+}
+
+.detail-meta-value {
+  font-size: 0.9375rem;
+  color: #212529;
+  word-break: break-word;
+}
+
+.detail-owner-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .detail-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-name {
+    font-size: 1.5rem;
+  }
+}
+
+/* ===========================
+   Startup Form & Form Pages
+   =========================== */
+.form-page {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.form-page h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #212529;
+  margin-bottom: 1.5rem;
+}
+
+.startup-form {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.startup-form .form-group {
+  margin-bottom: 1.25rem;
+}
+
+.startup-form .form-group label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #495057;
+  margin-bottom: 0.375rem;
+}
+
+.startup-form input[type='text'],
+.startup-form input[type='url'],
+.startup-form input[type='number'],
+.startup-form-textarea {
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  border: 1.5px solid #dee2e6;
+  border-radius: 6px;
+  font-size: 0.9375rem;
+  font-family: inherit;
+  color: #212529;
+  background-color: #fff;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  outline: none;
+}
+
+.startup-form input:focus,
+.startup-form-textarea:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+}
+
+.startup-form-select {
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  border: 1.5px solid #dee2e6;
+  border-radius: 6px;
+  font-size: 0.9375rem;
+  font-family: inherit;
+  color: #212529;
+  background-color: #fff;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.startup-form-select:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+}
+
+.startup-form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.input-error {
+  border-color: #dc3545 !important;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.12) !important;
+}
+
+.field-error {
+  display: block;
+  font-size: 0.8125rem;
+  color: #dc3545;
+  margin-top: 0.3rem;
+}
+
+.required-mark {
+  color: #dc3545;
+  margin-left: 2px;
+}
+
+.optional-mark {
+  color: #868e96;
+  font-size: 0.8125rem;
+  font-weight: 400;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 560px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .startup-form {
+    padding: 1.25rem;
+  }
+}
+
+/* ===========================
+   Navbar nav links (Stage 2)
+   =========================== */
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: 1.5rem;
+}
+
+/* On mobile, hide the desktop nav section; the mobile link is inside navbar-menu */
+@media (max-width: 768px) {
+  .navbar-nav {
+    display: none;
+  }
+
+  /* Show the mobile-only link inside the open navbar-menu */
+  .navbar-link--mobile {
+    display: block;
+  }
+}
+
+/* On desktop, hide the mobile duplicate link */
+@media (min-width: 769px) {
+  .navbar-link--mobile {
+    display: none;
+  }
+}

@@ -50,7 +50,7 @@ async function getStartups(req, res, next) {
     const filters = {};
 
     if (industry) {
-      filters.industry = industry;
+      filters.industry = new RegExp(escapeSearchText(industry.trim()), 'i');
     }
 
     if (stage) {
