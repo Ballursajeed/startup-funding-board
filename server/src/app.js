@@ -1,11 +1,13 @@
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-const userRoutes = require('./routes/user.route');
 const { errorHandler } = require('./middleware/errors');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
+
+const userRoutes = require('./routes/user.route');
 const startupRoutes = require('./routes/startup.route');
+const savedStartupRoutes = require('./routes/savedStartup.route');
 
 function createApp() {
   const app = express();
@@ -30,10 +32,13 @@ function createApp() {
         message: 'Too many attempts. Please try again later.',
     },
     });
+    
    app.use('/api/auth/register', authLimiter);
    app.use('/api/auth/login', authLimiter);
+
    app.use('/api/auth', userRoutes);
    app.use('/api/startups', startupRoutes);
+   app.use('/api/saved-startups', savedStartupRoutes);
 
   app.use((req, res) => res.status(404).json({ error: 'Route not found.' }));
   app.use(errorHandler);

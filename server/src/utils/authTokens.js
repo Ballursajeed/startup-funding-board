@@ -72,6 +72,7 @@ function getPublicUser(user) {
     name: user.name,
     email: user.email,
     role: user.role,
+    savedStartups: (user.savedStartups || []).map((id) => id.toString()),
   };
 }
 

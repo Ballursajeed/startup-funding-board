@@ -18,6 +18,13 @@ const userSchema = new mongoose.Schema(
       required: true,
       enum: ['founder', 'investor'],
     },
+    savedStartups: {
+        type: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Startup',
+        }],
+        default: [],
+    },
   },
   { timestamps: true, versionKey: false }
 );
