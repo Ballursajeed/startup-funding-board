@@ -14,3 +14,4 @@ export function extractError(err) {
 }
 
 export * from './startups.api.js';
+export * from './savedStartups.api.js';

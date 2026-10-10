@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SaveButton from './SaveButton.jsx';
 
 const inrFormatter = new Intl.NumberFormat('en-IN', {
   style: 'currency',
@@ -46,6 +47,7 @@ export default function StartupCard({ startup, currentUserId, onDelete }) {
             </button>
           </div>
         )}
+        <SaveButton startupId={startup._id} showSignInPrompt={false} />
       </div>
     </article>
   );

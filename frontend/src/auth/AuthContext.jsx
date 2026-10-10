@@ -5,12 +5,15 @@ import {
   setRefreshHandler,
 } from '../api/client.js';
 import * as authApi from '../api/auth.api.js';
+import { saveStartup, unsaveStartup } from '../api/savedStartups.api.js';
 
 export const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [savedIds, setSavedIds] = useState(() => new Set());
+  const [pendingSaveIds, setPendingSaveIds] = useState(() => new Set());
   const logoutRef = useRef(null);
 
   const logout = useCallback(async () => {
@@ -21,6 +24,8 @@ export function AuthProvider({ children }) {
     }
     setToken(null);
     setUser(null);
+    setSavedIds(new Set());
+    setPendingSaveIds(new Set());
   }, []);
 
   // Keep a ref so the auth failure handler (registered once) can always call
@@ -42,6 +47,7 @@ export function AuthProvider({ children }) {
         setToken(accessToken);
         const meRes = await authApi.getMe(accessToken);
         setUser(meRes.data.user);
+        setSavedIds(new Set(meRes.data.user.savedStartups ?? []));
       } catch (_) {
         // No valid session — treat as logged out silently
         setUser(null);
@@ -56,6 +62,7 @@ export function AuthProvider({ children }) {
     const { accessToken, user: userData } = res.data;
     setToken(accessToken);
     setUser(userData);
+    setSavedIds(new Set(userData.savedStartups ?? []));
   }, []);
 
   const register = useCallback(async (name, email, password, role) => {
@@ -63,12 +70,41 @@ export function AuthProvider({ children }) {
     const { accessToken, user: userData } = res.data;
     setToken(accessToken);
     setUser(userData);
+    setSavedIds(new Set(userData.savedStartups ?? []));
   }, []);
 
   const isAuthenticated = user !== null;
 
+  const toggleSave = useCallback(async (startupId) => {
+    setPendingSaveIds(prev => new Set([...prev, startupId]));
+    let didError = null;
+    try {
+      if (savedIds.has(startupId)) {
+        await unsaveStartup(startupId);
+        setSavedIds(prev => {
+          const s = new Set(prev);
+          s.delete(startupId);
+          return s;
+        });
+      } else {
+        await saveStartup(startupId);
+        setSavedIds(prev => new Set([...prev, startupId]));
+      }
+    } catch (err) {
+      didError = err;
+      // savedIds NOT updated on failure
+    } finally {
+      setPendingSaveIds(prev => {
+        const s = new Set(prev);
+        s.delete(startupId);
+        return s;
+      });
+    }
+    if (didError) throw didError;
+  }, [savedIds]);
+
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated, isLoading, login, register, logout }}>
+    <AuthContext.Provider value={{ user, isAuthenticated, isLoading, login, register, logout, savedIds, pendingSaveIds, toggleSave }}>
       {children}
     </AuthContext.Provider>
   );

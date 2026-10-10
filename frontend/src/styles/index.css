@@ -961,3 +961,74 @@ button {
     display: none;
   }
 }
+
+/* ===========================
+   Save Button
+   =========================== */
+.save-btn-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+
+.save-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.3rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: inherit;
+  border: 1.5px solid #dee2e6;
+  background-color: transparent;
+  color: #495057;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+}
+
+.save-btn:hover:not(:disabled) {
+  background-color: #eef2ff;
+  border-color: #4f46e5;
+  color: #4f46e5;
+}
+
+.save-btn--saved {
+  background-color: #eef2ff;
+  border-color: #4f46e5;
+  color: #4f46e5;
+}
+
+.save-btn--saved:hover:not(:disabled) {
+  background-color: #e0e7ff;
+  border-color: #4338ca;
+  color: #4338ca;
+}
+
+.save-btn--pending {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.save-error {
+  font-size: 0.8125rem;
+  color: #dc3545;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.sign-in-to-save {
+  font-size: 0.875rem;
+  color: #6c757d;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.sign-in-to-save:hover {
+  color: #4f46e5;
+  text-decoration: underline;
+}
+
+/* Saved Startups page reuses .startups-page and .startup-grid — no extra layout needed */

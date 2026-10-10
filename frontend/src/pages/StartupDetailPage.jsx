@@ -4,6 +4,7 @@ import { useAuth } from '../auth/useAuth.js';
 import { getStartup, deleteStartup, extractError } from '../api/index.js';
 import Spinner from '../components/ui/Spinner.jsx';
 import ErrorMessage from '../components/ui/ErrorMessage.jsx';
+import SaveButton from '../components/startups/SaveButton.jsx';
 
 const inrFormatter = new Intl.NumberFormat('en-IN', {
   style: 'currency',
@@ -89,6 +90,8 @@ export default function StartupDetailPage() {
               {startup.status}
             </span>
           </div>
+
+          <SaveButton startupId={startup._id} showSignInPrompt={true} />
 
           <section className="detail-section">
             <h2>About</h2>

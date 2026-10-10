@@ -22,6 +22,9 @@ export default function Navbar() {
         {/* Desktop nav links — hidden on mobile (shown inside open menu) */}
         <div className="navbar-nav" aria-label="Site navigation">
           <Link to="/startups" className="navbar-link">Startups</Link>
+          {isAuthenticated && (
+            <Link to="/saved-startups" className="navbar-link">Saved</Link>
+          )}
         </div>
 
         {/* Hamburger button — visible on small screens only */}
@@ -39,6 +42,9 @@ export default function Navbar() {
         <div className={`navbar-menu${menuOpen ? ' navbar-menu--open' : ''}`}>
           {/* Mobile-only nav link (desktop version is in navbar-nav above) */}
           <Link to="/startups" className="navbar-link navbar-link--mobile">Startups</Link>
+          {isAuthenticated && (
+            <Link to="/saved-startups" className="navbar-link navbar-link--mobile">Saved</Link>
+          )}
 
           {isAuthenticated ? (
             <>

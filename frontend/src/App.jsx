@@ -10,6 +10,7 @@ import StartupsPage from './pages/StartupsPage.jsx';
 import StartupDetailPage from './pages/StartupDetailPage.jsx';
 import CreateStartupPage from './pages/CreateStartupPage.jsx';
 import EditStartupPage from './pages/EditStartupPage.jsx';
+import SavedStartupsPage from './pages/SavedStartupsPage.jsx';
 
 export default function App() {
   return (
@@ -52,6 +53,16 @@ export default function App() {
               element={
                 <ProtectedRoute requiredRole="founder">
                   <EditStartupPage />
+                </ProtectedRoute>
+              }
+            />
+
+            {/* Saved startups — any authenticated user */}
+            <Route
+              path="/saved-startups"
+              element={
+                <ProtectedRoute>
+                  <SavedStartupsPage />
                 </ProtectedRoute>
               }
             />
