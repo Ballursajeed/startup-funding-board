@@ -9,7 +9,7 @@ async function start() {
 
   await connectDB();
   const app = createApp()
-  app.listen(port, () => console.log(`API listening on http://localhost:${port}`));
+  app.listen(port, '0.0.0.0', () => console.log(`API listening on http://0.0.0.0:${port}`));
   
 }
 

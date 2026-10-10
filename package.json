@@ -1,0 +1,12 @@
+{
+  "name": "startup-funding-board",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "npm install --prefix server && npm install --include=dev --prefix frontend && npm run build --prefix frontend",
+    "start": "node server/src/server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
