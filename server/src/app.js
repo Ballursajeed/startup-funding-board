@@ -5,7 +5,7 @@ const userRoutes = require('./routes/user.route');
 const { errorHandler } = require('./middleware/errors');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
-
+const startupRoutes = require('./routes/startup.route');
 
 function createApp() {
   const app = express();
@@ -19,7 +19,7 @@ function createApp() {
   app.use(cookieParser());
 
   app.get('/api/health', (req, res) => res.json({ status: 'ok' }));
-  
+
   const authLimiter = rateLimit({
     windowMs: 15 * 60 * 1000,
     limit: 20,
@@ -33,6 +33,7 @@ function createApp() {
    app.use('/api/auth/register', authLimiter);
    app.use('/api/auth/login', authLimiter);
    app.use('/api/auth', userRoutes);
+   app.use('/api/startups', startupRoutes);
 
   app.use((req, res) => res.status(404).json({ error: 'Route not found.' }));
   app.use(errorHandler);
