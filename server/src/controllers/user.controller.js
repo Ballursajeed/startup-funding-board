@@ -14,9 +14,19 @@ const {
   getPublicUser,
 } = require('../utils/authTokens');
 
+function isValidEmail(email) {
+  if (typeof email !== 'string') return false;
+  const trimmed = email.trim();
+  return trimmed.length > 0 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed);
+}
+
 async function register(req, res, next) {
   try {
     const { name, email, password, role } = req.body;
+
+    if (!isValidEmail(email)) {
+      throw new AppError(400, 'Invalid email address.');
+    }
 
     const existingUser = await User.findOne({ email });
 
@@ -66,6 +76,10 @@ async function register(req, res, next) {
 async function userLogin(req, res, next) {
   try {
     const { email, password } = req.body;
+
+    if (!isValidEmail(email)) {
+      throw new AppError(400, 'Invalid email address.');
+    }
 
     const user = await User.findOne({ email }).select('+passwordHash');
 
